@@ -4,7 +4,8 @@
     align-items: flex-start;
     font-family: Archivo, sans-serif;
     font-size: 2rem;
-
+    width: 100%;
+    max-width: 800px;
 }
 
 .greeting-top {
@@ -13,4 +14,9 @@
 
 .greeting-bottom {
     opacity: 0.5;
+}
+
+.greeting-container span::after {
+    content: "";
+    animation: none;
 }

@@ -1,0 +1,48 @@
+.composer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #E4E4E4;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 25px;
+    height: 150px;
+    justify-content: space-between;
+    box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+}
+
+.composer-textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    padding: 0.5rem;
+    background: transparent;
+    font-family: Archivo, sans-serif;
+    flex: 1;
+}
+
+.composer-textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.composer-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.composer-button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: Archivo, sans-serif;
+    cursor: pointer;
+    border-radius: 25px;
+
+}
+
+.composer-button-icon {
+    width: 2rem;
+    height: 2rem;
+}
