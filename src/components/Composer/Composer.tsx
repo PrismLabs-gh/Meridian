@@ -11,7 +11,13 @@ function ComposerButton({ icon, onclick }: { icon: string; onclick: any }) {
   );
 }
 
-export function Composer({ onAttach, onSend }: { onAttach: any; onSend: any }) {
+export function Composer({ onAttach, onSend, placeholder = "Type your message here...", buttonLabel = "Send", disabled = false }: {
+  onAttach?: any;
+  onSend: (content: any) => void;
+  placeholder?: string;
+  buttonLabel?: string;
+  disabled?: boolean;
+}) {
   const [input, setInput] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -19,15 +25,17 @@ export function Composer({ onAttach, onSend }: { onAttach: any; onSend: any }) {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !disabled) {
       e.preventDefault();
       handleSend();
     }
   };
 
   const handleSend = () => {
-    if (input.trim() !== "") {
-      onSend(input);
+    if (input.trim() !== "" && !disabled) {
+      onSend([
+        { type: "text", value: input }
+      ]);
       setInput("");
     }
   };
@@ -35,11 +43,12 @@ export function Composer({ onAttach, onSend }: { onAttach: any; onSend: any }) {
   return (
     <div className="composer-container">
       <textarea
-        placeholder="Type your message here..."
+        placeholder={placeholder}
         className="composer-textarea"
         value={input}
-        onChange={(e) => handleInputChange(e)}
+        onChange={handleInputChange}
         onKeyPress={handleKeyPress}
+        disabled={disabled}
       ></textarea>
       <div className="composer-buttons">
         <ComposerButton icon={attachIcon} onclick={onAttach} />

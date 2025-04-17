@@ -1,28 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-import { Greeting } from "./components/Greeting/Greeting";
 import { Routes, Route } from "react-router-dom";
-import { Composer } from "./components/Composer/Composer";
-
-function HomepageWrapper() {
-  return (
-    <div className="homepage">
-      <div className="homepage-container">
-        <div className="homepage-content">
-          <Greeting username="user" />
-          <Composer />
-        </div>
-      </div>
-    </div>
-  );
-}
+import ChatPage from './pages/ChatPage/ChatPage';
+import NewChatPage from './pages/NewChatPage/NewChatPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Routes>
-      <Route path="/" element={<HomepageWrapper />} />
+      <Route path="/" element={<NewChatPage />} />
+      <Route path="/chat/:chatId" element={<ChatPage />} />
     </Routes>
   );
 }
